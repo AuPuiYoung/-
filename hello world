@@ -1,3 +1,51 @@
-#!/usr/bin/python3
- 
-print("Hello, World!")
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("请输入出行的月份：");
+    int month = sc.nextInt();
+    System.out.println("选择头等舱还是经济舱？数字1为头等舱，数字2为经济舱");
+    int kind = sc.nextInt();
+    double result = 60000; // 原始价格
+    switch (month) {
+    // 旺季的票价计算
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+        switch (kind) {
+        case 1: // 旺季头等舱
+            result = result * 0.9;
+            break;
+        case 2:
+            result = result * 0.8;
+            break;
+        default:
+            System.out.println("选择种类有误，请重新输入！");
+            break;
+        }
+        break;
+    case 1:
+    case 2:
+    case 3:
+    case 12:
+        switch (kind) {
+        case 1: // 旺季头等舱
+            result = result * 0.5;
+            break;
+        case 2:
+            result = result * 0.4;
+            break;
+        default:
+            System.out.println("选择种类有误，请重新输入！");
+            break;
+        }
+        break;
+    default:
+        System.out.println("日期选择有误，请重新输入！");
+        break;
+    }
+    System.out.println("您选择的机票价格为：" + result);
+}
